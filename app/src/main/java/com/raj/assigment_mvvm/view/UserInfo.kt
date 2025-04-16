@@ -1,7 +1,9 @@
 package com.raj.assigment_mvvm.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +13,7 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.raj.assigment_mvvm.Adapter.CustomView_Adpater
@@ -71,11 +74,28 @@ class UserInfo : Fragment() {
 
             }
         } else {
-            Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT).show()
-        }
+            val dialog = AlertDialog.Builder(activity as Context)
+            dialog.setTitle("Error")
+            dialog.setMessage("Internet Connection not found ")
+            dialog.setPositiveButton("Open Internet") { text, listner ->
+                val settingInternet = Intent(Settings.ACTION_WIRELESS_SETTINGS)
+                startActivity(settingInternet)
+                activity?.finish()
+            }
+            dialog.setNegativeButton("Exit") { text, listner ->
+                activity?.finish()
 
+            }
+            dialog.create()
+            dialog.show()
+
+
+        }
         return view
     }
-
-
 }
+
+
+
+
+
