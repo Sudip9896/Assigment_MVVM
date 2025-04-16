@@ -23,3 +23,8 @@ An Android application built using Kotlin and the MVVM architecture that fetches
 - ProgressBar & EditText
 - Toast messages
   
+## 📸 Screenshots
+
+| Home Screen | Search Feature |
+|-------------|----------------|
+| ![home](screenshots/home.png) | ![search](screenshots/search.png) |
